@@ -13,12 +13,12 @@ public class Test {
 
 	public static void main(String[] args) throws FileNotFoundException {
 		
-		String FileName = "201608026-雨水管网过程模拟-芝加哥过程线-华家池演示002.txt";
+		String FileName = "201608030-旧-雨水管网过程模拟-芝加哥过程线-华家池演示002.txt";
 		FileOutputStream fs = new FileOutputStream(new File(FileName));
 		PrintStream printStream = new PrintStream(fs);
 		printStream.println(FileName);
-		
-		DecimalFormat df=new DecimalFormat("##.##");
+
+		DecimalFormat df = new DecimalFormat("##.##");
 
 		// 管网基础数据：子系统数，最大管段数，最大节点数，最大管道起点数，路径最大管段数，最大计算次数，中间结果写文件指针
 		// int Nbr = 8;//子系统数
@@ -669,7 +669,7 @@ public class Test {
 					// ------------------ 计算溢流节点结束 ---------------
 					// outfile<<endl;
 					// outfile<<"    it   管段号  I0   J0   管径dpl   管段qp 水力半径R    充满度¨¨ 流速¨′(m/s)  上游水位  下游水位  上管底高  下管底高  上地面高"<<endl;
-					printStream.println("    it   管段号  I0   J0   管径dpl   管段qp 水力半径R    充满度 流速(m/s)  上游水位  下游水位  上管底高  下管底高  上地面高");
+					printStream.println("    it   管段号  I0   J0   管径dpl   管段qp   水力半径R  充满度   流速(m/s)  上游水位  下游水位  上管底高  下管底高  上地面高");
 					for (i = 0; i < NP; i++) {// s.Format("%6d%6d%6d%5d%10.2lf%10.3lf%10.3lf%10.3lf%10.3lf%10.3lf%10.3lf%10.3lf%10.3lf%10.3lf\n",
 												// it,i,I0 [i],J0
 												// [i],dpl [i],qpt
@@ -704,7 +704,7 @@ public class Test {
 				// -----屏幕输出管段水力计算结束------
 				// cout<<" it 管段号 I0 J0 管径dpl 管段qp 水力半径R 充满度 流速(m/s) 上游水位
 				// 下游水位 上管底高 下管底高 上地面高”<<endl;
-				printStream.println("    it   管段号  I0   J0   管径dpl   管段qp 水力半径R    充满度 流速(m/s)  上游水位  下游水位  上管底高  下管底高  上地面高");
+				printStream.println("    it   管段号  I0   J0   管径dpl   管段qp   水力半径R  充满度   流速(m/s)  上游水位  下游水位  上管底高  下管底高  上地面高");
 				// outfile<<endl;
 				for (it = 0; it < NT; it++) {// outfile<<"  it= "<<it<<endl;
 												// outfile<<endl;
