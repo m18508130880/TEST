@@ -8,6 +8,7 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.io.PrintStream;
 import java.text.DecimalFormat;
+import java.util.HashMap;
 
 import jxl.Sheet;
 import jxl.Workbook;
@@ -18,7 +19,6 @@ import jxl.read.biff.BiffException;
 //
 public class ImportOfTest2 {
 	public static void main(String[] args) throws BiffException, IOException {
-
 		// CString s;
 		// 管网基础数据：
 		// 管段数，节点数，管道起点数，路径最大管段数，最大计算次数，模拟时段数，芝加哥峰点时段位置
@@ -76,6 +76,8 @@ public class ImportOfTest2 {
 		Nroute = Integer.parseInt(rs.getCell(8, rowCnt).getContents().trim());
 
 		rowCnt += 4;
+		String ProductWaterGJ = sysName + ":";
+		//String text = null;
 
 		/**
 		 * 子系统管段数据表格 Pipe.No 起点号I0 终点号J0 长度LP 直径DP 摩阻系数 起端标高 终端标高 1 0 1 28.5 0.3
@@ -216,6 +218,7 @@ public class ImportOfTest2 {
 		printStream.println(FileName);
 
 		DecimalFormat df = new DecimalFormat("##.####");
+		DecimalFormat df1 = new DecimalFormat("######.##");
 		// --输出数据文件开始---
 		// ofstream outfile;
 		// outfile.open("20160908-雨水管网过程模拟-华家池-50-3.txt");
@@ -806,6 +809,7 @@ public class ImportOfTest2 {
 		printStream.println();
 		// outfile<<"it="<<endl;
 		printStream.println("it=");
+		
 		for (it = 0; it < NT; it++) {
 			if (it < 10) {// outfile<<" "<<it<<"   ";
 				printStream.print(" " + it + "   ");
@@ -816,11 +820,15 @@ public class ImportOfTest2 {
 			for (i = 0; i < NN; i++) {
 				if (overflow[it][i] <= 0.0) {// outfile<<"          ";
 					printStream.print("          ");
+					ProductWaterGJ += 0 + "|";
 				} else { // s.Format("%10.2f",overflow[it][i]);
 							// outfile<<s;
 					printStream.printf("%10.2f", overflow[it][i]);
+					ProductWaterGJ += df1.format(overflow[it][i]) + "|";
 				}
 			}
+			ProductWaterGJ += ";";
+			//printStream.print(ProductWaterGJ);
 			// outfile<<endl;
 			printStream.println();
 		}
@@ -857,6 +865,7 @@ public class ImportOfTest2 {
 			// outfile<<endl;
 			printStream.println();
 		}
+		printStream.print(ProductWaterGJ);
 	}
 	// ====================================================================
 	// outfile.close();
